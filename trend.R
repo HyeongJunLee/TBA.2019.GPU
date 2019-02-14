@@ -22,6 +22,49 @@ ori    <- "o"
 
 
 #####################################################################################
+### Descriptive Statistics of Data
+#####################################################################################
+
+# Cleansed data
+df.eff  <- df.raw[-id.out,]
+
+# TDP
+stat.TDP <- data.frame(Attribute = "TDP", 
+                       Min       = min(df.eff$TDP), 
+                       Median    = median(df.eff$TDP), 
+                       Mean      = mean(df.eff$TDP), 
+                       Max       = max(df.eff$TDP), 
+                       St.dev    = sd(df.eff$TDP))
+
+# FPP
+stat.FPP <- data.frame(Attribute = "FPP", 
+                       Min       = min(df.eff$Floating.point.performance), 
+                       Median    = median(df.eff$Floating.point.performance), 
+                       Mean      = mean(df.eff$Floating.point.performance), 
+                       Max       = max(df.eff$Floating.point.performance), 
+                       St.dev    = sd(df.eff$Floating.point.performance))
+
+# TR
+stat.TR <- data.frame(Attribute = "TR", 
+                       Min       = min(df.eff$Texture.rate), 
+                       Median    = median(df.eff$Texture.rate), 
+                       Mean      = mean(df.eff$Texture.rate), 
+                       Max       = max(df.eff$Texture.rate), 
+                       St.dev    = sd(df.eff$Texture.rate))
+
+# PR
+stat.PR <- data.frame(Attribute = "PR", 
+                       Min       = min(df.eff$Pixel.rate), 
+                       Median    = median(df.eff$Pixel.rate), 
+                       Mean      = mean(df.eff$Pixel.rate), 
+                       Max       = max(df.eff$Pixel.rate), 
+                       St.dev    = sd(df.eff$Pixel.rate))
+
+# Bind & display
+df.stat <- rbind(stat.TDP, stat.FPP, stat.TR, stat.PR)
+df.stat
+
+#####################################################################################
 ### I/O Regression
 #####################################################################################
 
@@ -73,9 +116,6 @@ ggplot(df.reg.amd, aes(x = month, y = TDP)) + geom_point() +
 #####################################################################################
 ### Trends of Outputs per Input of All DMU
 #####################################################################################
-
-# Cleansed data
-df.eff  <- df.raw[-id.out,]
 
 # Make electric efficiency
 df.trend <- data.frame(DMU     = df.eff$DMU, 

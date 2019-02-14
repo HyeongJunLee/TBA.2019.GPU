@@ -14,9 +14,7 @@ sapply(pkgs, require, character.only = T)
 
 # Load data
 path   <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vRozW_LPzi4Objm4RbLzM_cItbMZzPbaVFheZcv__palp9QhA0qUwUidRqeP7SwrHpcfDSAuXYraPjP/pub?output=csv"
-path2  <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vRyu65AXjBaSFrKy2oos9nbJ4NM6PpHKoOcuie3O_58STPQ8FGFresl9nMhXkQDHPL1pQkmTTccZQBi/pub?output=csv"
 df.raw <- read.csv(url(path))
-df.raw2 <- read.csv(url(path2))
 df.raw[, "Released.year"] <- floor(df.raw[, "Released.date"])
 
 
